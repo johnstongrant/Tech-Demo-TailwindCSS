@@ -7,6 +7,14 @@ By the end of this tutorial you will have some of the basic stepping stones for 
 
 This repo serves as a skeleton react-app that you can pull down and follow the next steps to actively learn tailwind.
 
+## Why Use a CSS Framework
+
+* "Don't reinvent the wheel" - save time
+* Keep styles and naming consistent on large/team projects
+* Reusability
+
+CSS Framework stats (https://ossinsight.io/collections/css-framework/)
+
 ### Task 1: Installing Tailwindcss
 Tailwind comes with a lot of functionality and all sorts of customization that can be daunting at first, but with our help we will make these new ideas fit seamlessly with your basic foundations of css.
 
