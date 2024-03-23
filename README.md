@@ -37,4 +37,41 @@ the npm prompt to install both can be found here:
 npm install @headlessui/react @heroicons/react
 ```
 
-### Task 3: Creating a Component
+### Task 3: Config and Css
+This is the last step of setup before we get into using tailwind with react!
+
+First you will want to run the 'init' command. This will create a tailwind config file where you can fine tune tailwind to fit your exact needs. For example we will be learning about mobile and desktop specific breakpoints and will be modifying the config file for readability.
+
+here is the command:
+```
+npx tailwindcss init
+```
+
+In this file you will see:
+```
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+We want to ensure tailwind knows where to look for our css and react components, so in the 'content: []' array add the following string:
+```
+"./src/**/*.{js,jsx,ts,tsx}"
+```
+This will allow tailwind to search for all your related components and configure them to tailwind's css formats
+
+Lastly, in your index.css file, at the top add these three lines:
+```
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+Done! From here on you can start using tailwind specific classes to help create your perfect app. Moving forward we will be designing a simple card that will show the flexability you have when designing for multiple screens.
+
+## Component 1: Responsive Design
+
+
