@@ -100,3 +100,27 @@ Lastly, in your index.css file, at the top add these three lines:
 Done! From here on you can start using tailwind specific classes to help create your perfect app. Moving forward we will be designing a simple card that will show the flexability you have when designing for multiple screens.
 
 ## Component 1: Responsive Design
+
+Designing for mobile first is becoming more and more demanding and as we start project 2 we must all be aware of developing a web based application that looks good on our phones. 
+
+Whats incredible about Tailwind is that it follows this mobile first design, making it so every utility class is fit for mobile. However, when we want to display on a desktop we can utilize _breakpoints_ to override the utility class to fit our larger screens. 
+
+Below is the breakpoints we can apply to _any_ utility class
+
+|Breakpoint|Minimum Width|CSS
+|--------|-----|--------|
+|`sm`|640px|`@media (min-width: 640px) { ... }`|
+|`md`|768px|`@media (min-width: 768px) { ... }`|
+|`lg`|1024px|`@media (min-width: 1024px) { ... }`|
+|`xl`|1280px|`@media (min-width: 1280px) { ... }`|
+|`2xl`|1536px|`@media (min-width: 1536px) { ... }`|
+
+Lets do a very simple walkthrough by utlizing these breakpoints to see how they work. Copy the following code snippet and paste it into your App.js return call:
+
+```
+<p class="text-blue-600 md:text-red-600">Testing this with text</p>
+```
+
+When you refresh your app you should see the sample text in the color red. This is because we've set our breakpoint to `md` meaning on screens 768px or bigger the text will remain red. However, if you increase the zoom of your screen (or utilize developer tools to display mobile view) you will see the text change to blue. 
+
+In conclusion unspecified utility classes like ```text-blue-600``` will be applied to all screen sizes, where as applying a breakpoint prefix like `md` will apply to screens that size and _larger__ .
