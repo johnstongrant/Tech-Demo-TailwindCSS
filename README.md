@@ -123,4 +123,4 @@ Lets do a very simple walkthrough by utlizing these breakpoints to see how they 
 
 When you refresh your app you should see the sample text in the color red. This is because we've set our breakpoint to `md` meaning on screens 768px or bigger the text will remain red. However, if you increase the zoom of your screen (or utilize developer tools to display mobile view) you will see the text change to blue. 
 
-In conclusion unspecified utility classes like ```text-blue-600``` will be applied to all screen sizes, where as applying a breakpoint prefix like `md` will apply to screens that size and _larger__ .
+In conclusion unspecified utility classes like ```text-blue-600``` will be applied to all screen sizes, where as applying a breakpoint prefix like `md` will apply to screens that size and _larger_ .
