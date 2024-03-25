@@ -9,11 +9,9 @@ This repo serves as a skeleton react-app that you can pull down and follow the n
 
 ## Why Use a CSS Framework
 
-* "Don't reinvent the wheel" - save time
-* Keep styles and naming consistent on large/team projects
-* Reusability
+Frameworks like Tailwind provide ready-to-use CSS classes that allow you to easily implement your web app's layout and style common components without having to reinvent the wheel. This not only saves time, but also promotes reusability. Dev teams often use CSS frameworks to avoid duplication of CSS styles, maintain consistent user interfaces, and provide a common style naming schema that makes large-scale development more navigable. Open source frameworks such as Tailwind also come with the benefit of having established documentation and a large userbase which can be helpful when troubleshooting and searching for inspiration.
 
-CSS Framework stats (https://ossinsight.io/collections/css-framework/)
+While there are [many CSS frameworks](https://github.com/troxler/awesome-css-frameworks) to choose from, each with their own benefits, Tailwind has [soared in popularity](https://ossinsight.io/collections/css-framework/) over the last several years.
 
 ### Task 1: Installing Tailwindcss
 Tailwind comes with a lot of functionality and all sorts of customization that can be daunting at first, but with our help we will make these new ideas fit seamlessly with your basic foundations of css.
