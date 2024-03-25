@@ -1,4 +1,4 @@
-# Tech-Demo-Tailwindcss
+# Tech Demo of Tailwind CSS
 
 ![Tailwindcss logo](/tailwind/public/tailwindcss-logotype-white.svg)
 
