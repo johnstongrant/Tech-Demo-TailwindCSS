@@ -1,5 +1,7 @@
 # Tech-Demo-Tailwindcss
 
+![Tailwindcss logo](/tailwind/public/tailwindcss-logotype-white.svg)
+
 ## Introduction
 
 Welcome to team Patches' tech demo! Today we will be walking you through a CSS library called Tailwind. We wanted to share this library with you before getting into the weeds with project 2 and provide a framework that will make developing your app swift and simple.
