@@ -78,13 +78,13 @@ module.exports = {
     extend: {},
   },
   plugins: [],
-}
+};
 ```
 
 We want to ensure tailwind knows where to look for our css and react components, so in the 'content: []' array add the following string:
 
 ```js
-"./src/**/*.{js,jsx,ts,tsx}"
+"./src/**/*.{js,jsx,ts,tsx}";
 ```
 
 This will allow tailwind to search for all your related components and configure them to tailwind's css formats
@@ -101,19 +101,19 @@ Done! From here on you can start using tailwind specific classes to help create 
 
 ## Component 1: Responsive Design
 
-Designing for mobile first is becoming more and more demanding and as we start project 2 we must all be aware of developing a web based application that looks good on our phones. 
+Designing for mobile first is becoming more and more demanding and as we start project 2 we must all be aware of developing a web based application that looks good on our phones.
 
-Whats incredible about Tailwind is that it follows this mobile first design, making it so every utility class is fit for mobile. However, when we want to display on a desktop we can utilize _breakpoints_ to override the utility class to fit our larger screens. 
+Whats incredible about Tailwind is that it follows this mobile first design, making it so every utility class is fit for mobile. However, when we want to display on a desktop we can utilize _breakpoints_ to override the utility class to fit our larger screens.
 
 Below is the breakpoints we can apply to _any_ utility class
 
-|Breakpoint|Minimum Width|CSS
-|--------|-----|--------|
-|`sm`|640px|`@media (min-width: 640px) { ... }`|
-|`md`|768px|`@media (min-width: 768px) { ... }`|
-|`lg`|1024px|`@media (min-width: 1024px) { ... }`|
-|`xl`|1280px|`@media (min-width: 1280px) { ... }`|
-|`2xl`|1536px|`@media (min-width: 1536px) { ... }`|
+| Breakpoint | Minimum Width | CSS                                  |
+| ---------- | ------------- | ------------------------------------ |
+| `sm`       | 640px         | `@media (min-width: 640px) { ... }`  |
+| `md`       | 768px         | `@media (min-width: 768px) { ... }`  |
+| `lg`       | 1024px        | `@media (min-width: 1024px) { ... }` |
+| `xl`       | 1280px        | `@media (min-width: 1280px) { ... }` |
+| `2xl`      | 1536px        | `@media (min-width: 1536px) { ... }` |
 
 Lets do a very simple walkthrough by utlizing these breakpoints to see how they work. Copy the following code snippet and paste it into your App.js return call:
 
@@ -121,6 +121,64 @@ Lets do a very simple walkthrough by utlizing these breakpoints to see how they 
 <p class="text-blue-600 md:text-red-600">Testing this with text</p>
 ```
 
-When you refresh your app you should see the sample text in the color red. This is because we've set our breakpoint to `md` meaning on screens 768px or bigger the text will remain red. However, if you increase the zoom of your screen (or utilize developer tools to display mobile view) you will see the text change to blue. 
+When you refresh your app you should see the sample text in the color red. This is because we've set our breakpoint to `md` meaning on screens 768px or bigger the text will remain red. However, if you increase the zoom of your screen (or utilize developer tools to display mobile view) you will see the text change to blue.
 
-In conclusion unspecified utility classes like ```text-blue-600``` will be applied to all screen sizes, where as applying a breakpoint prefix like `md` will apply to screens that size and _larger_ .
+In conclusion unspecified utility classes like `text-blue-600` will be applied to all screen sizes, where as applying a breakpoint prefix like `md` will apply to screens that size and _larger_ .
+
+## Component 2: Using Tailwind Components
+
+In addition to using pre-defined Tailwind classes, we could use Tailwind components as well. A list of components could be found at this link (https://tailwindui.com/components).
+
+For now, we will demonstrate using a Tailwind Avatar component. This is the code of Avatar component copy pasted the Tailwind website:
+
+```jsx
+<div className="flex -space-x-1 overflow-hidden">
+  <img
+    className="inline-block h-6 w-6 rounded-full ring-2 ring-white"
+    src={
+      "https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+    }
+    alt=""
+  ></img>
+</div>
+```
+
+which would work just perfectly, but for usuability, we will demonstrate converting this component into reusable React component.
+
+Firstly, you will want the component to be wrapped in a React component and export it.
+
+```js
+export function Avatar() {
+  return (
+    <>
+      //the avatar component
+    <>
+  )
+}
+```
+
+Next, we want this component to have some props rather than some static values. For now, we will replace the source of the image as a prop. Remember that you can also replace other properties as prop such as the className.
+
+```js
+export function Avatar({ src, className }) {
+  return (
+    <>
+      <div className="flex -space-x-1 overflow-hidden">
+        <img
+          className="inline-block h-6 w-6 rounded-full ring-2 ring-white"
+          src={src}
+          alt=""
+        ></img>
+      </div>
+    </>
+  );
+}
+```
+
+This is it! Now you can call the new Avatar component how many times you want with appropriate props. We have just created a reusable React component with props.
+
+```js
+<Avatar src="src1"></Avatar>
+<Avatar src="src2"></Avatar>
+<Avatar src="..."></Avatar>
+```
