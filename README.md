@@ -129,7 +129,7 @@ In conclusion unspecified utility classes like `text-blue-600` will be applied t
 
 In addition to using pre-defined Tailwind classes, we could use Tailwind components as well. A list of components could be found at this link (https://tailwindui.com/components).
 
-For now, we will demonstrate using a Tailwind Avatar component. This is the code of Avatar component copy pasted the Tailwind website:
+For now, we will demonstrate using a Tailwind Avatar component. This is the code for Avatar component from the abovementioned Tailwind website:
 
 ```jsx
 <div className="flex -space-x-1 overflow-hidden">
@@ -143,7 +143,7 @@ For now, we will demonstrate using a Tailwind Avatar component. This is the code
 </div>
 ```
 
-which would work just perfectly, but for usuability we will demonstrate converting this component into reusable React component.
+which would work perfectly fine, but for usuability we will demonstrate converting this component into reusable React component.
 
 Firstly, you will want the component to be wrapped in a React component and export it.
 
@@ -177,7 +177,7 @@ export function Avatar({ src, className }) {
 
 This is it! Now you can call the new Avatar component how many times you want with appropriate props. We have just created a reusable React component with props.
 
-```jsx
+```js
 <Avatar src="src1"></Avatar>
 <Avatar src="src2"></Avatar>
 <Avatar src="..."></Avatar>
