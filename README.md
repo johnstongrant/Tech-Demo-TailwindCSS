@@ -182,3 +182,38 @@ This is it! Now you can call the new Avatar component how many times you want wi
 <Avatar src="src2"></Avatar>
 <Avatar src="..."></Avatar>
 ```
+## Tailwind theme mode customization
+Tailwind CSS provides low-level utility classes to build custom designs. This feature enables us to create dark mode theme for users' who prefer this theme over others. To start the dark mode implementation, we need to apply some changes to Tailwind's `configuration` file. These changes can be seen in the following:
+```js
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  darkMode: 'selector',
+  // ...
+}
+```
+The configuration above will enable the developer to use "dark:" variant in order to distinguish between classes that will be used for dark mode and those of that will be used for light mode. The following is an example of how to use dark mode class assignment:
+```html
+<!-- Dark mode not enabled -->
+<html>
+<body>
+  <!-- Will be white -->
+  <div class="bg-white dark:bg-black">
+    <!-- ... -->
+  </div>
+</body>
+</html>
+```
+
+In this example, dark mode is not enabled, therefore `dark:bg-black` would not work. On the contrary, the following is an example of correct implementation of dark mode:
+```html
+<!-- Dark mode enabled -->
+<html class="dark">
+<body>
+  <!-- Will be black -->
+  <div class="bg-white dark:bg-black">
+    <!-- ... -->
+  </div>
+</body>
+</html>
+```
+
