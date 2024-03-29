@@ -182,3 +182,23 @@ This is it! Now you can call the new Avatar component how many times you want wi
 <Avatar src="src2"></Avatar>
 <Avatar src="..."></Avatar>
 ```
+## Component 3: Tailwind and States
+
+Tailwind can be used to to create interactions with elements by applying states using psuedo classes as modifiers. Take for example this line of code:
+
+```
+<button class="bg-blue-400 rounded-full"> A Cool Button </button>
+```
+
+We can apply a hover state within the class definition to define behavior for when the user hovers their cursor over the button. Let's have it so the button gets darker when we hover over it by modifying the line of code to following:
+
+```
+<button class="bg-blue-400  hover:bg-blue-700   rounded-full"> A Cool Button </button>
+```
+By adding an active state and focus state, we can have the button become even darker when clicked and give it a red ring when it's right clicked like so:
+
+```
+<button class="bg-blue-400  hover:bg-blue-700 active:bg-blue-800  focus:ring focus:ring-red-400 rounded-full"> A Cool Button </button>
+```
+Using states, we can easily add conditionality to our element's appearence with using these psuedo classes modifiers. A list of available psuedo-classes modifiers to use can be found here: (https://tailwindcss.com/docs/hover-focus-and-other-states#pseudo-class-reference).
+
