@@ -237,3 +237,22 @@ In this example, dark mode is not enabled, therefore `dark:bg-black` would not w
 </body>
 </html>
 ```
+
+Furthermore, Tailwind provides some strategies that enable the developers to use user's system prefernces in order to change the default theme of the website by `window.matchMedia()` API. Here's a simple example of how to use operating system prefernces while defining different themes for the website:
+```js
+// On page load or when changing themes, best to add inline in `head` to avoid FOUC
+if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+  document.documentElement.classList.add('dark')
+} else {
+  document.documentElement.classList.remove('dark')
+}
+
+// Whenever the user explicitly chooses light mode
+localStorage.theme = 'light'
+
+// Whenever the user explicitly chooses dark mode
+localStorage.theme = 'dark'
+
+// Whenever the user explicitly chooses to respect the OS preference
+localStorage.removeItem('theme')
+```
