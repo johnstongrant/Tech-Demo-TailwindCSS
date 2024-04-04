@@ -29,6 +29,7 @@ Tailwind is a utility class based CSS framework. Utility classes give you the fl
 While the same effect could be accomplished by inlining the styles using the [HTML style attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/style), utility classes provide the benefit of coming directly from a CSS stylesheet. In CSS parlance, this means we're applying "rules" rather than "styles" to elements, which allows us to access the entire CSS toolbox and use CSS [preprocessors](https://developer.mozilla.org/en-US/docs/Glossary/CSS_preprocessor), among [many other benefits](https://frontstuff.io/no-utility-classes-arent-the-same-as-inline-styles).
 
 ### Task 1: Installing Tailwindcss
+_please note that all credit and attribution for setup process belongs to [tailwind](https://v2.tailwindcss.com/docs/guides/create-react-app)_
 
 Tailwind comes with a lot of functionality and all sorts of customization that can be daunting at first, but with our help we will make these new ideas fit seamlessly with your basic foundations of css.
 
@@ -41,27 +42,78 @@ git clone https://github.com/johnstongrant/Tech-Demo-TailwindCSS.git
 Next, inorder to get started we can simply navigate into our react app project, and just like any other library we invoke an npm install prompt as follows:
 
 ```bash
-npm install tailwindcss@latest
+npm install -D tailwindcss@npm:@tailwindcss/postcss7-compat postcss@^7 autoprefixer@^9
 ```
 
-This will start importing all of the necessary toolkits that tailwind requires to preform its amazing styling behavior.
+This will start importing all of the necessary toolkits for us to start using tailwind in our project.
 
 ### Task 2: Installing Dependencies
+Since in this course we are utilizing the `create-react-app` command for our react enviornment we need to install another dependency so that we can configure tailwind to our liking.
 
-Alongside tailwind comes two other libraries that put everything together. The first library is [HeadlessUI](https://headlessui.com/) which you can read more about but in short this provides the interactivity of tailwind components. The other library is [Heroicons](https://heroicons.com/) which will give your website a cohesive, unified look.
-
-the npm prompt to install both can be found here:
+this depenedency is called CRACO and can be read into further detail [here](https://github.com/dilanx/craco) but for simplicity just know that this allows for overidding a css library called [PostCSS](https://postcss.org/) that tailwind uses under the hood within our config file.
 
 ```bash
-npm install @headlessui/react @heroicons/react
+npm install @craco/craco
+```
+#### 2.1 Craco Config 
+
+After this has been installed we need to manually change our package.json file to use _craco_ instead of _react-scripts_ 
+
+In your `package.json` you will find the scripts section with the following commands:
+```
+  {
+    // ...
+    "scripts": {
+
+     "start": "react-scripts start",
+
+     "build": "react-scripts build",
+
+     "test": "react-scripts test",
+
+     "eject": "react-scripts eject"
+    },
+  }
+```
+
+We will be changing the _start_, _build_, and _test_ so afterwards your script section should look like this:
+
+```
+  {
+    // ...
+    "scripts": {
+
+     "start": "craco start",
+
+     "build": "craco build",
+
+     "test": "craco test",
+
+     "eject": "react-scripts eject"
+    },
+  }
+```
+
+Lastly create a file in your root directory called `craco.config.js` and copy the following lines into it:
+```
+// craco.config.js
+module.exports = {
+  style: {
+    postcss: {
+      plugins: [
+        require('tailwindcss'),
+        require('autoprefixer'),
+      ],
+    },
+  },
+}
 ```
 
 ### Task 3: Config and Css
 
 This is the last step of setup before we get into using tailwind with react!
 
-First you will want to run the 'init' command. This will create a tailwind config file where you can fine tune tailwind to fit your exact needs. For example we will be learning about mobile and desktop specific breakpoints and will be modifying the config file for readability.
-
+First you will want to run the 'init' command. This will create a tailwind config file where you can fine tune tailwind to fit your exact needs. You can read more about customization of your config file [here](https://v2.tailwindcss.com/docs/configuration)
 here is the command:
 
 ```bash
@@ -70,24 +122,28 @@ npx tailwindcss init
 
 In this file you will see:
 
-```js
-/** @type {import('tailwindcss').Config} */
+```
+// tailwind.config.js
 module.exports = {
-  content: [],
+  purge: [],
+  darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
   },
+  variants: {
+    extend: {},
+  },
   plugins: [],
-};
+}
 ```
 
-We want to ensure tailwind knows where to look for our css and react components, so in the 'content: []' array add the following string:
+We want to ensure tailwind knows where to look for our css and react components, so in the 'purge: []' array add the following strings:
 
-```js
-"./src/**/*.{js,jsx,ts,tsx}";
+```
+['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
 ```
 
-This will allow tailwind to search for all your related components and configure them to tailwind's css formats
+This will allow tailwind to search for all your related components and configure them to tailwind's css formats and get rid of unecessary component styling when we host our website.
 
 Lastly, in your index.css file, at the top add these three lines:
 
@@ -96,8 +152,8 @@ Lastly, in your index.css file, at the top add these three lines:
 @tailwind components;
 @tailwind utilities;
 ```
+You will also want to navigate to `index.js` and ensure you see `import './index.css'` somewhere at the top of the file.
 
-Done! From here on you can start using tailwind specific classes to help create your perfect app. Moving forward we will be designing a simple card that will show the flexability you have when designing for multiple screens.
 
 ## Component 1: Responsive Design
 
