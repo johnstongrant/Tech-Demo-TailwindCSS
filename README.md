@@ -94,7 +94,7 @@ We will be changing the _start_, _build_, and _test_ so afterwards your script s
   }
 ```
 
-Lastly create a file in your root directory called `craco.config.js` and copy the following lines into it:
+Finally create a file in your root directory called `craco.config.js` and copy the following lines into it:
 ```
 // craco.config.js
 module.exports = {
@@ -114,7 +114,8 @@ module.exports = {
 This is the last step of setup before we get into using tailwind with react!
 
 First you will want to run the 'init' command. This will create a tailwind config file where you can fine tune tailwind to fit your exact needs. You can read more about customization of your config file [here](https://v2.tailwindcss.com/docs/configuration)
-here is the command:
+
+This should be called from your root directory of the project:
 
 ```bash
 npx tailwindcss init
@@ -143,6 +144,8 @@ We want to ensure tailwind knows where to look for our css and react components,
 ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
 ```
 
+I know a lot of this feels like magic, and it kind of is in a sense. Just know that these configurations are essential for tailwind to know where to look to style our website. 
+
 This will allow tailwind to search for all your related components and configure them to tailwind's css formats and get rid of unecessary component styling when we host our website.
 
 Lastly, in your index.css file, at the top add these three lines:
@@ -154,12 +157,14 @@ Lastly, in your index.css file, at the top add these three lines:
 ```
 You will also want to navigate to `index.js` and ensure you see `import './index.css'` somewhere at the top of the file.
 
+Whew. We know that was a lot of setup and some of it can seem confusing. However we are all done! Now we can start discussing why all this setup is worth doing.
+
 
 ## Component 1: Responsive Design
 
 Designing for mobile first is becoming more and more demanding and as we start project 2 we must all be aware of developing a web based application that looks good on our phones.
 
-Whats incredible about Tailwind is that it follows this mobile first design, making it so every utility class is fit for mobile. However, when we want to display on a desktop we can utilize _breakpoints_ to override the utility class to fit our larger screens.
+Tailwind, like many other modern css libraries, focus on a 'mobile-first' approach to styling. This makes it so [utility](https://v2.tailwindcss.com/docs/utility-first) class is fit for mobile. However, when we want to display on a desktop we can utilize _breakpoints_ to override the utility class to fit our larger screens.
 
 Below is the breakpoints we can apply to _any_ utility class
 
@@ -180,8 +185,30 @@ Lets do a very simple walkthrough by utlizing these breakpoints to see how they 
 When you refresh your app you should see the sample text in the color red. This is because we've set our breakpoint to `md` meaning on screens 768px or bigger the text will remain red. However, if you increase the zoom of your screen (or utilize developer tools to display mobile view) you will see the text change to blue.
 
 In conclusion unspecified utility classes like `text-blue-600` will be applied to all screen sizes, where as applying a breakpoint prefix like `md` will apply to screens that size and _larger_ .
+`
 
-## Component 2: Using Tailwind Components
+## Component 2: Tailwind Utility classes and States
+
+Tailwind can be used to to create interactions with elements by applying states using psuedo classes as modifiers. Take for example this line of code:
+
+```
+<button class="bg-blue-400 rounded-full"> A Cool Button </button>
+```
+
+We can apply a hover state within the class definition to define behavior for when the user hovers their cursor over the button. Let's have it so the button gets darker when we hover over it by modifying the line of code to following:
+
+```
+<button class="bg-blue-400  hover:bg-blue-700   rounded-full"> A Cool Button </button>
+```
+By adding an active state and focus state, we can have the button become even darker when clicked and give it a red ring when it's right clicked like so:
+
+```
+<button class="bg-blue-400  hover:bg-blue-700 active:bg-blue-800  focus:ring focus:ring-red-400 rounded-full"> A Cool Button </button>
+```
+Using states, we can easily add conditionality to our element's appearence with using these psuedo classes modifiers. A list of available psuedo-classes modifiers to use can be found here: (https://tailwindcss.com/docs/hover-focus-and-other-states#pseudo-class-reference).
+
+
+## Component 3: Using Tailwind's out-of-the-box Examples
 
 In addition to using pre-defined Tailwind classes, we could use Tailwind components as well. A list of components could be found at this link (https://tailwindui.com/components).
 
@@ -239,27 +266,7 @@ This is it! Now you can call the new Avatar component how many times you want wi
 <Avatar src="..."></Avatar>
 ```
 
-## Component 3: Tailwind and States
-
-Tailwind can be used to to create interactions with elements by applying states using psuedo classes as modifiers. Take for example this line of code:
-
-```
-<button class="bg-blue-400 rounded-full"> A Cool Button </button>
-```
-
-We can apply a hover state within the class definition to define behavior for when the user hovers their cursor over the button. Let's have it so the button gets darker when we hover over it by modifying the line of code to following:
-
-```
-<button class="bg-blue-400  hover:bg-blue-700   rounded-full"> A Cool Button </button>
-```
-By adding an active state and focus state, we can have the button become even darker when clicked and give it a red ring when it's right clicked like so:
-
-```
-<button class="bg-blue-400  hover:bg-blue-700 active:bg-blue-800  focus:ring focus:ring-red-400 rounded-full"> A Cool Button </button>
-```
-Using states, we can easily add conditionality to our element's appearence with using these psuedo classes modifiers. A list of available psuedo-classes modifiers to use can be found here: (https://tailwindcss.com/docs/hover-focus-and-other-states#pseudo-class-reference).
-
-## Tailwind theme mode customization
+## Tailwind Config customization: Dark Mode
 Tailwind CSS provides low-level utility classes to build custom designs. This feature enables us to create dark mode theme for users' who prefer this theme over others. To start the dark mode implementation, we need to apply some changes to Tailwind's `configuration` file. These changes can be seen in the following:
 ```js
 /** @type {import('tailwindcss').Config} */
