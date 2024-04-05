@@ -187,9 +187,9 @@ When you refresh your app you should see the sample text in the color red. This 
 In conclusion unspecified utility classes like `text-blue-600` will be applied to all screen sizes, where as applying a breakpoint prefix like `md` will apply to screens that size and _larger_ .
 `
 
-## Component 2: Tailwind Utility classes and States
+## Component 2: Tailwind Utility classes and States in action
 
-Tailwind can be used to to create interactions with elements by applying states using psuedo classes as modifiers. Take for example this line of code:
+Tailwind can be used to to create interactions with elements by applying states using utility classes as discussed prior and modifiers like from the responsive design section. Take for example this line of code:
 
 ```
 <button class="bg-blue-400 rounded-full"> A Cool Button </button>
@@ -210,7 +210,7 @@ Using states, we can easily add conditionality to our element's appearence with 
 
 ## Component 3: Using Tailwind's out-of-the-box Examples
 
-In addition to using pre-defined Tailwind classes, we could use Tailwind components as well. A list of components could be found at this link (https://tailwindui.com/components).
+During homework and project 1 we were told to utilize PureCss which came with it a lot of pre-defined templates for us to work with. Tailwind also provides some sample templates for us to utilize and the list of them can be found here: (https://tailwindui.com/components).
 
 For now, we will demonstrate using a Tailwind Avatar component. This is the code for Avatar component from the abovementioned Tailwind website:
 
