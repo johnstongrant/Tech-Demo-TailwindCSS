@@ -159,35 +159,7 @@ You will also want to navigate to `index.js` and ensure you see `import './index
 
 Whew. We know that was a lot of setup and some of it can seem confusing. However we are all done! Now we can start discussing why all this setup is worth doing.
 
-
-## Component 1: Responsive Design
-
-Designing for mobile first is becoming more and more demanding and as we start project 2 we must all be aware of developing a web based application that looks good on our phones.
-
-Tailwind, like many other modern css libraries, focuses on a 'mobile-first' approach to styling. This makes it so all [utility](https://v2.tailwindcss.com/docs/utility-first) classes are fit for mobile right out of the gate. However, when we want to display our information in a different way on different sized screens we can utilize _breakpoints_ to override the utility classes to fit our larger screens.
-
-Below are the breakpoints we can apply to _any_ utility class
-
-| Breakpoint | Minimum Width | CSS                                  |
-| ---------- | ------------- | ------------------------------------ |
-| `sm`       | 640px         | `@media (min-width: 640px) { ... }`  |
-| `md`       | 768px         | `@media (min-width: 768px) { ... }`  |
-| `lg`       | 1024px        | `@media (min-width: 1024px) { ... }` |
-| `xl`       | 1280px        | `@media (min-width: 1280px) { ... }` |
-| `2xl`      | 1536px        | `@media (min-width: 1536px) { ... }` |
-
-Lets do a very simple walkthrough by utlizing these breakpoints to see how they work. Copy the following code snippet and paste it into your App.js return call:
-
-```
-<p class="text-blue-600 md:text-red-600">Testing this with text</p>
-```
-
-When you refresh your app you should see the sample text in the color red. This is because we've set our breakpoint to `md` meaning on screens 768px or bigger the text will remain red. However, if you increase the zoom of your screen (or utilize developer tools to display mobile view) you will see the text change to blue.
-
-In conclusion unspecified utility classes like `text-blue-600` will be applied to all screen sizes, where as applying a breakpoint prefix like `md` will apply to screens that size and _larger_ .
-`
-
-## Component 2: Tailwind Utility classes and States in action
+## Component 1: Tailwind Utility classes and States in action
 
 Tailwind can be used to to create interactions with elements by applying states using utility classes as discussed prior and modifiers like from the responsive design section. Take for example this line of code:
 
@@ -208,7 +180,7 @@ By adding an active state and focus state, we can have the button become even da
 Using states, we can easily add conditionality to our element's appearence with using these psuedo classes modifiers. A list of available psuedo-classes modifiers to use can be found here: (https://tailwindcss.com/docs/hover-focus-and-other-states#pseudo-class-reference).
 
 
-## Component 3: Using Tailwind's out-of-the-box Examples
+## Component 2: Using Tailwind's out-of-the-box Examples
 
 During homework and project 1 we were told to utilize PureCss which came with it a lot of pre-defined templates for us to work with. Tailwind also provides some sample templates for us to utilize and the list of them can be found here: (https://tailwindui.com/components).
 
@@ -265,6 +237,30 @@ This is it! Now you can call the new Avatar component how many times you want wi
 <Avatar src="src2"></Avatar>
 <Avatar src="..."></Avatar>
 ```
+
+## Component 3: Responsive Design
+
+Designing for mobile first is becoming more and more demanding and as we start project 2 we must all be aware of developing a web based application that looks good on our phones.
+
+Tailwind, like many other modern css libraries, focuses on a 'mobile-first' approach to styling. This makes it so all [utility](https://v2.tailwindcss.com/docs/utility-first) classes are fit for mobile right out of the gate. However, when we want to display our information in a different way on different sized screens we can utilize _breakpoints_ to override the utility classes to fit our larger screens.
+
+Below are the breakpoints we can apply to _any_ utility class
+
+| Breakpoint | Minimum Width | CSS                                  |
+| ---------- | ------------- | ------------------------------------ |
+| `sm`       | 640px         | `@media (min-width: 640px) { ... }`  |
+| `md`       | 768px         | `@media (min-width: 768px) { ... }`  |
+| `lg`       | 1024px        | `@media (min-width: 1024px) { ... }` |
+| `xl`       | 1280px        | `@media (min-width: 1280px) { ... }` |
+| `2xl`      | 1536px        | `@media (min-width: 1536px) { ... }` |
+
+Lets do a very simple walkthrough by utlizing these breakpoints to see how they work. Copy the following code snippet and paste it into your App.js return call:
+
+```
+<p class="text-blue-600 md:text-red-600">Testing this with text</p>
+```
+
+When you refresh your app you should see the sample text in the color red. This is because we've set our breakpoint to `md` meaning on screens 768px or bigger the text will remain red. However, if you increase the zoom of your screen (or utilize developer tools to display mobile view) you will see the text change to blue.
 
 ## Tailwind Config customization: Dark Mode
 Tailwind CSS provides low-level utility classes to build custom designs. This feature enables us to create dark mode theme for users' who prefer this theme over others. To start the dark mode implementation, we need to apply some changes to Tailwind's `configuration` file. These changes can be seen in the following:
