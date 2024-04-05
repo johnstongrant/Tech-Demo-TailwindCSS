@@ -164,9 +164,9 @@ Whew. We know that was a lot of setup and some of it can seem confusing. However
 
 Designing for mobile first is becoming more and more demanding and as we start project 2 we must all be aware of developing a web based application that looks good on our phones.
 
-Tailwind, like many other modern css libraries, focus on a 'mobile-first' approach to styling. This makes it so [utility](https://v2.tailwindcss.com/docs/utility-first) class is fit for mobile. However, when we want to display on a desktop we can utilize _breakpoints_ to override the utility class to fit our larger screens.
+Tailwind, like many other modern css libraries, focuses on a 'mobile-first' approach to styling. This makes it so all [utility](https://v2.tailwindcss.com/docs/utility-first) classes are fit for mobile right out of the gate. However, when we want to display our information in a different way on different sized screens we can utilize _breakpoints_ to override the utility classes to fit our larger screens.
 
-Below is the breakpoints we can apply to _any_ utility class
+Below are the breakpoints we can apply to _any_ utility class
 
 | Breakpoint | Minimum Width | CSS                                  |
 | ---------- | ------------- | ------------------------------------ |
