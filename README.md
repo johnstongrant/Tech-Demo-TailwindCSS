@@ -29,6 +29,7 @@ Tailwind is a utility class based CSS framework. Utility classes give you the fl
 While the same effect could be accomplished by inlining the styles using the [HTML style attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/style), utility classes provide the benefit of coming directly from a CSS stylesheet. In CSS parlance, this means we're applying "rules" rather than "styles" to elements, which allows us to access the entire CSS toolbox and use CSS [preprocessors](https://developer.mozilla.org/en-US/docs/Glossary/CSS_preprocessor), among [many other benefits](https://frontstuff.io/no-utility-classes-arent-the-same-as-inline-styles).
 
 ### Task 1: Installing Tailwindcss
+
 _please note that all credit and attribution for setup process belongs to [tailwind](https://v2.tailwindcss.com/docs/guides/create-react-app)_
 
 Tailwind comes with a lot of functionality and all sorts of customization that can be daunting at first, but with our help we will make these new ideas fit seamlessly with your basic foundations of css.
@@ -48,6 +49,7 @@ npm install -D tailwindcss@npm:@tailwindcss/postcss7-compat postcss@^7 autoprefi
 This will start importing all of the necessary toolkits for us to start using tailwind in our project.
 
 ### Task 2: Installing Dependencies
+
 Since in this course we are utilizing the `create-react-app` command for our react enviornment we need to install another dependency so that we can configure tailwind to our liking.
 
 this depenedency is called CRACO and can be read into further detail [here](https://github.com/dilanx/craco) but for simplicity just know that this allows for overidding a css library called [PostCSS](https://postcss.org/) that tailwind uses under the hood within our config file.
@@ -55,12 +57,14 @@ this depenedency is called CRACO and can be read into further detail [here](http
 ```bash
 npm install @craco/craco
 ```
-#### 2.1 Craco Config 
 
-After this has been installed we need to manually change our package.json file to use _craco_ instead of _react-scripts_ 
+#### 2.1 Craco Config
+
+After this has been installed we need to manually change our package.json file to use _craco_ instead of _react-scripts_
 
 In your `package.json` you will find the scripts section with the following commands:
-```
+
+```json
   {
     // ...
     "scripts": {
@@ -78,7 +82,7 @@ In your `package.json` you will find the scripts section with the following comm
 
 We will be changing the _start_, _build_, and _test_ so afterwards your script section should look like this:
 
-```
+```json
   {
     // ...
     "scripts": {
@@ -95,7 +99,8 @@ We will be changing the _start_, _build_, and _test_ so afterwards your script s
 ```
 
 Finally create a file in your root directory called `craco.config.js` and copy the following lines into it:
-```
+
+```js
 // craco.config.js
 module.exports = {
   style: {
@@ -123,7 +128,7 @@ npx tailwindcss init
 
 In this file you will see:
 
-```
+```js
 // tailwind.config.js
 module.exports = {
   purge: [],
@@ -140,11 +145,11 @@ module.exports = {
 
 We want to ensure tailwind knows where to look for our css and react components, so in the 'purge: []' array add the following strings:
 
-```
+```js
 ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
 ```
 
-I know a lot of this feels like magic, and it kind of is in a sense. Just know that these configurations are essential for tailwind to know where to look to style our website. 
+I know a lot of this feels like magic, and it kind of is in a sense. Just know that these configurations are essential for tailwind to know where to look to style our website.
 
 This will allow tailwind to search for all your related components and configure them to tailwind's css formats and get rid of unecessary component styling when we host our website.
 
@@ -155,6 +160,7 @@ Lastly, in your index.css file, at the top add these three lines:
 @tailwind components;
 @tailwind utilities;
 ```
+
 You will also want to navigate to `index.js` and ensure you see `import './index.css'` somewhere at the top of the file.
 
 Whew. We know that was a lot of setup and some of it can seem confusing. However we are all done! Now we can start discussing why all this setup is worth doing.
@@ -163,26 +169,27 @@ Whew. We know that was a lot of setup and some of it can seem confusing. However
 
 Tailwind can be used to to create interactions with elements by applying states using utility classes as discussed prior and modifiers like from the responsive design section. Take for example this line of code:
 
-```
+```html
 <button class="bg-blue-400 rounded-full"> A Cool Button </button>
 ```
 
 We can apply a hover state within the class definition to define behavior for when the user hovers their cursor over the button. Let's have it so the button gets darker when we hover over it by modifying the line of code to following:
 
+```html
+<button class="bg-blue-400 hover:bg-blue-700 rounded-full"> A Cool Button </button>
 ```
-<button class="bg-blue-400  hover:bg-blue-700   rounded-full"> A Cool Button </button>
-```
+
 By adding an active state and focus state, we can have the button become even darker when clicked and give it a red ring when it's right clicked like so:
 
+```html
+<button class="bg-blue-400 hover:bg-blue-700 active:bg-blue-800 focus:ring focus:ring-red-400 rounded-full"> A Cool Button </button>
 ```
-<button class="bg-blue-400  hover:bg-blue-700 active:bg-blue-800  focus:ring focus:ring-red-400 rounded-full"> A Cool Button </button>
-```
-Using states, we can easily add conditionality to our element's appearence with using these psuedo classes modifiers. A list of available psuedo-classes modifiers to use can be found here: (https://tailwindcss.com/docs/hover-focus-and-other-states#pseudo-class-reference).
 
+Using states, we can easily add conditionality to our element's appearence with using these psuedo classes modifiers. A list of available psuedo-classes modifiers to use can be found within the [Tailwind CSS docs](https://tailwindcss.com/docs/hover-focus-and-other-states#pseudo-class-reference).
 
 ## Component 2: Using Tailwind's out-of-the-box Examples
 
-During homework and project 1 we were told to utilize PureCss which came with it a lot of pre-defined templates for us to work with. Tailwind also provides some sample templates for us to utilize and the list of them can be found here: (https://tailwindui.com/components).
+During homework and project 1 we were told to utilize PureCss which came with it a lot of pre-defined templates for us to work with. Tailwind also provides some sample templates for us to utilize and the list of them can be found in [Tailwind's component documentation](https://tailwindui.com/components).
 
 For now, we will demonstrate using a Tailwind Avatar component. This is the code for Avatar component from the abovementioned Tailwind website:
 
@@ -256,14 +263,16 @@ Below are the breakpoints we can apply to _any_ utility class
 
 Lets do a very simple walkthrough by utlizing these breakpoints to see how they work. Copy the following code snippet and paste it into your App.js return call:
 
-```
+```html
 <p class="text-blue-600 md:text-red-600">Testing this with text</p>
 ```
 
 When you refresh your app you should see the sample text in the color red. This is because we've set our breakpoint to `md` meaning on screens 768px or bigger the text will remain red. However, if you increase the zoom of your screen (or utilize developer tools to display mobile view) you will see the text change to blue.
 
 ## Tailwind Config customization: Dark Mode
+
 Tailwind CSS provides low-level utility classes to build custom designs. This feature enables us to create dark mode theme for users' who prefer this theme over others. To start the dark mode implementation, we need to apply some changes to Tailwind's `configuration` file. These changes can be seen in the following:
+
 ```js
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -271,7 +280,9 @@ module.exports = {
   // ...
 }
 ```
+
 The configuration above will enable the developer to use "dark:" variant in order to distinguish between classes that will be used for dark mode and those of that will be used for light mode. The following is an example of how to use dark mode class assignment:
+
 ```html
 <!-- Dark mode not enabled -->
 <html>
@@ -285,6 +296,7 @@ The configuration above will enable the developer to use "dark:" variant in orde
 ```
 
 In this example, dark mode is not enabled, therefore `dark:bg-black` would not work. On the contrary, the following is an example of correct implementation of dark mode:
+
 ```html
 <!-- Dark mode enabled -->
 <html class="dark">
@@ -298,6 +310,7 @@ In this example, dark mode is not enabled, therefore `dark:bg-black` would not w
 ```
 
 Furthermore, Tailwind provides some strategies that enable the developers to use user's system prefernces in order to change the default theme of the website by `window.matchMedia()` API. Here's a simple example of how to use operating system prefernces while defining different themes for the website:
+
 ```js
 // On page load or when changing themes, best to add inline in `head` to avoid FOUC
 if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
