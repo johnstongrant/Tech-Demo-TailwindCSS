@@ -43,88 +43,19 @@ git clone https://github.com/johnstongrant/Tech-Demo-TailwindCSS.git
 Next, inorder to get started we can simply navigate into our react app project, and just like any other library we invoke an npm install prompt as follows:
 
 ```bash
-npm install -D tailwindcss@npm:@tailwindcss/postcss7-compat postcss@^7 autoprefixer@^9
+npm install -D tailwindcss
 ```
 
 This will start importing all of the necessary toolkits for us to start using tailwind in our project.
 
-### Task 2: Installing Dependencies
-
-Since in this course we are utilizing the `create-react-app` command for our react enviornment we need to install another dependency so that we can configure tailwind to our liking.
-
-this depenedency is called CRACO and can be read into further detail [here](https://github.com/dilanx/craco) but for simplicity just know that this allows for overidding a css library called [PostCSS](https://postcss.org/) that tailwind uses under the hood within our config file.
-
-```bash
-npm install @craco/craco
-```
-
-#### 2.1 Craco Config
-
-After this has been installed we need to manually change our package.json file to use _craco_ instead of _react-scripts_
-
-In your `package.json` you will find the scripts section with the following commands:
-
-```json
-  {
-    // ...
-    "scripts": {
-
-     "start": "react-scripts start",
-
-     "build": "react-scripts build",
-
-     "test": "react-scripts test",
-
-     "eject": "react-scripts eject"
-    },
-  }
-```
-
-We will be changing the _start_, _build_, and _test_ so afterwards your script section should look like this:
-
-```json
-  {
-    // ...
-    "scripts": {
-
-     "start": "craco start",
-
-     "build": "craco build",
-
-     "test": "craco test",
-
-     "eject": "react-scripts eject"
-    },
-  }
-```
-
-Finally create a file in your root directory called `craco.config.js` and copy the following lines into it:
-
-```js
-// craco.config.js
-module.exports = {
-  style: {
-    postcss: {
-      plugins: [
-        require('tailwindcss'),
-        require('autoprefixer'),
-      ],
-    },
-  },
-}
-```
-
 ### Task 3: Config and Css
 
-This is the last step of setup before we get into using tailwind with react!
-
-First you will want to run the 'init' command. This will create a tailwind config file where you can fine tune tailwind to fit your exact needs. You can read more about customization of your config file [here](https://v2.tailwindcss.com/docs/configuration)
-
-This should be called from your root directory of the project:
+Next we will be creating a config file specifically for tailwind so that it can know our specified settings if we wish to change them.
 
 ```bash
 npx tailwindcss init
 ```
+
 
 In this file you will see:
 
