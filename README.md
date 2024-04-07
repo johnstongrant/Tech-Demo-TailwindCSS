@@ -119,19 +119,20 @@ By adding an active state and focus state, we can have the button become even da
 <button class="bg-blue-400 hover:bg-blue-700 active:bg-blue-800 focus:ring focus:ring-red-400 rounded-full"> A Cool Button </button>
 ```
 
-Using states, we can easily add conditionality to our element's appearence with using these psuedo classes modifiers. A list of available psuedo-classes modifiers to use can be found within the [Tailwind CSS docs](https://tailwindcss.com/docs/hover-focus-and-other-states#pseudo-class-reference).
+Using states, we can easily add conditionality to our element's appearence with using these psuedo-class modifiers. A list of available psuedo-class modifiers to use can be found within the [Tailwind CSS docs](https://tailwindcss.com/docs/hover-focus-and-other-states#pseudo-class-reference).
 
-## Component 2: Using Tailwind's out-of-the-box Examples
+## Component 2: Using Tailwind's Out-of-the-Box Examples
 
-During homework and project 1 we were told to utilize PureCss which came with it a lot of pre-defined templates for us to work with. Tailwind also provides some sample templates for us to utilize and the list of them can be found in [Tailwind's component documentation](https://tailwindui.com/components).
+Homework 1 and Project 1 utilized PureCss, which came with a lot of pre-defined templates for us to work with. Tailwind also provides some sample templates for us to utilize and the list of them can be found in [Tailwind's component documentation](https://tailwindui.com/components).
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Please note: If you intend on using tailwind's predefined templates you will need to import the following dependiecies with this command:**
-```
+**Please note: If you intend on using Tailwind's predefined templates you will need to import the following dependiecies with this command:**
+
+```bash
 npm install @heroicons/react @headlessui/react
 ```
 
-This is due to most of tailwinds templates utilizing heroicon imports and headless ui functionality to get responsive behavior. By all means delete their imports and calls, but this is here to remove headaches with your implementations using tailwind.
+This is due to most of Tailwind's templates utilizing heroicon imports and headless ui functionality to get responsive behavior. By all means delete their imports and calls, but this is here to remove headaches with your implementations using Tailwind.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -149,9 +150,9 @@ For now, we will demonstrate using a Tailwind Avatar component. This is the code
 </div>
 ```
 
-which would work perfectly fine, but for usuability we will demonstrate converting this component into reusable React component.
+The HTML version of this avatar works perfectly fine as standalone HTML, but let's add some reusability by converting this avatar into a reusable React component.
 
-Firstly, you will want the component to be wrapped in a React component and export it.
+First, you will want the component to be wrapped in a React component and export it:
 
 ```js
 export function Avatar() {
@@ -163,7 +164,7 @@ export function Avatar() {
 }
 ```
 
-Next, we want this component to have some props rather than some static values. For now, we will replace the source of the image as a prop. Remember that you can also replace other properties as prop such as the className.
+Next, we want this component to have some props rather than use static values. For now, we will replace the source of the image as a prop. Remember that you can also replace other properties as prop such as the className.
 
 ```js
 export function Avatar({ src, className }) {
@@ -191,9 +192,9 @@ This is it! Now you can call the new Avatar component how many times you want wi
 
 ## Component 3: Responsive Design
 
-Designing for mobile first is becoming more and more demanding and as we start project 2 we must all be aware of developing a web based application that looks good on our phones.
+Mobile-first design is becoming more and more in demand, and as we build project 2 we must all be aware of developing a web based application that looks good not only on desktops, but also on mobile devices.
 
-Tailwind, like many other modern css libraries, focuses on a 'mobile-first' approach to styling. This makes it so all [utility](https://v2.tailwindcss.com/docs/utility-first) classes are fit for mobile right out of the gate. However, when we want to display our information in a different way on different sized screens we can utilize _breakpoints_ to override the utility classes to fit our larger screens.
+Tailwind, like many other modern CSS libraries, focuses on a 'mobile-first' approach to styling. This makes it so all [utility](https://v2.tailwindcss.com/docs/utility-first) classes are fit for mobile right out of the gate. However, when we want to display our information in a different way on different sized screens we can utilize _breakpoints_ to override the utility classes to fit our larger screens.
 
 Below are the breakpoints we can apply to _any_ utility class
 
@@ -205,32 +206,36 @@ Below are the breakpoints we can apply to _any_ utility class
 | `xl`       | 1280px        | `@media (min-width: 1280px) { ... }` |
 | `2xl`      | 1536px        | `@media (min-width: 1536px) { ... }` |
 
-Lets do a very simple walkthrough by utlizing these breakpoints to see how they work. Copy the following code snippet and paste it into your App.js return call:
+Let's do a very simple walkthrough of breakpoints to see how they work. Copy the following code snippet and paste it into your `App.js` return call:
 
 ```html
 <p class="text-blue-600 md:text-red-600">Testing this with text</p>
 ```
 
-When you refresh your app you should see the sample text in the color red. This is because we've set our breakpoint to `md` meaning on screens 768px or bigger the text will remain red. However, if you increase the zoom of your screen (or utilize developer tools to display mobile view) you will see the text change to blue.
+When you refresh your app, you should see the sample text in the color red. This is because we've set our breakpoint to `md`, meaning on "medium" screens - displays 768px wide or larger - the text will remain red. However, if you increase the zoom of your screen (or utilize developer tools to display mobile view) you will see the text change to blue.
 
 [Larger Screen](redtxt.png)
 [Smaller Screen](bluetxt.png)
 
+## Tailwind Config Customization: Dark Mode
 
+Tailwind provides low-level utility classes to build custom designs. This feature enables us to create a dark mode theme for users who prefer an alternative color scheme. To start the dark mode implementation, we need to apply some changes to the `tailwind.config.js` file we created while setting up Tailwind. This file is found in your react project's root directory.
 
-## Tailwind Config customization: Dark Mode
-
-Tailwind CSS provides low-level utility classes to build custom designs. This feature enables us to create dark mode theme for users' who prefer this theme over others. To start the dark mode implementation, we need to apply some changes to Tailwind's `configuration` file. These changes can be seen in the following:
+To add dark mode theming, change the contents of your `tailwind.config.js` to the following:
 
 ```js
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: 'selector',
-  // ...
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
 }
 ```
 
-The configuration above will enable the developer to use "dark:" variant in order to distinguish between classes that will be used for dark mode and those of that will be used for light mode. The following is an example of how to use dark mode class assignment:
+The configuration above will enable you and your team to use a "dark:" CSS selector in order to distinguish between classes that will be used for dark mode and those of that will be used for light mode. The following is an example of how to use dark mode class assignment:
 
 ```html
 <!-- Dark mode not enabled -->
@@ -244,7 +249,7 @@ The configuration above will enable the developer to use "dark:" variant in orde
 </html>
 ```
 
-In this example, dark mode is not enabled, therefore `dark:bg-black` would not work. On the contrary, the following is an example of correct implementation of dark mode:
+In this example, dark mode is not enabled, therefore `dark:bg-black` would not work. In contrast, the following is an example of correct implementation of dark mode:
 
 ```html
 <!-- Dark mode enabled -->
@@ -258,10 +263,10 @@ In this example, dark mode is not enabled, therefore `dark:bg-black` would not w
 </html>
 ```
 
-Furthermore, Tailwind provides some strategies that enable the developers to use user's system prefernces in order to change the default theme of the website by `window.matchMedia()` API. Here's a simple example of how to use operating system prefernces while defining different themes for the website:
+Furthermore, Tailwind provides some strategies that enable the developers to use user's system prefernces in order to change the default theme of the website by `window.matchMedia()` API. Here's a simple example of how to use operating system prefernces while defining different themes for the website. Note that it's best to add this JavaScript inline the the HTML Head element in order to avoid a ["flash of unstyled content"](https://en.wikipedia.org/wiki/Flash_of_unstyled_content):
 
 ```js
-// On page load or when changing themes, best to add inline in `head` to avoid FOUC
+// On page load or when changing themes
 if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
   document.documentElement.classList.add('dark')
 } else {
@@ -279,4 +284,5 @@ localStorage.removeItem('theme')
 ```
 
 ## Review and Discussion
-To conclude, we've shared a lot of information to you about the use cases and inner components of tailwind CSS. Although we only scratch the surface of what tailwind can do for you and your web app, we wanted to give you several different topics that you can now delve deeper into, and see if tailwind will work for you and your team. We hope that one of these topics will be enough to show you that tailwind is worth including and can make your css lifecyle something to look forward to!
+
+To conclude, we've shared a lot of information to you about the use cases and inner components of Tailwind CSS. Although we only scratch the surface of what Tailwind can do for you and your web app, we wanted to give you several different topics that you can now delve deeper into, and see if Tailwind will work for you and your team. We hope that one of these topics will be enough to show you that Tailwind is worth including and can make your css lifecyle something to look forward to!
