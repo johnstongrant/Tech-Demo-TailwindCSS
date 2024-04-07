@@ -87,6 +87,35 @@ I know a lot of this feels like magic, and it kind of is in a sense. Just know t
 
 This will allow Tailwind to search for all your related components, configure the components to use Tailwind's CSS formating, and get rid of unecessary component styling when we host our website.
 
+#### Themes
+
+Tailwind makes customization easy. While many CSS frameworks' default themes are customizable, often through the use of [CSS preprocessors](https://developer.mozilla.org/en-US/docs/Glossary/CSS_preprocessor), Tailwind makes customization a focus and provides customization directly in the `tailwind.config.js` file.
+
+Within your config file's "theme" section, you can set the colors, fonts, spacing variables, and even breakpoints used by Tailwind. As an example, let's set some default colors, add a font, and change the border radius used by Tailwind:
+
+```js
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  theme: {
+    colors: {
+      'red': '#ff0000',
+      'blue': '#0000ff',
+    },
+    fontFamily: {
+      sans: ['Bungee Spice', 'sans-serif'],
+      serif: ['Merriweather', 'serif'],
+    }
+    extend: {},
+  },
+  plugins: [],
+}
+```
+
+For in-depth documentation of custom themeing in Tailwind, see Tailwind's [official documentation](https://tailwindcss.com/docs/theme).
+
+#### Configuration Wrap-Up
+
 Finally, in your index.css file, add these three lines to the top of the file:
 
 ```css
