@@ -59,25 +59,20 @@ npx tailwindcss init
 
 In this file you will see:
 
-```js
-// tailwind.config.js
+```/** @type {import('tailwindcss').Config} */
 module.exports = {
-  purge: [],
-  darkMode: false, // or 'media' or 'class'
+  content: [],
   theme: {
-    extend: {},
-  },
-  variants: {
     extend: {},
   },
   plugins: [],
 }
 ```
 
-We want to ensure tailwind knows where to look for our css and react components, so in the 'purge: []' array add the following strings:
+We want to ensure tailwind knows where to look for our templates and react components, so in the 'content: []' array add the following string:
 
 ```js
-['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
+"./src/**/*.{js,jsx,ts,tsx}"
 ```
 
 I know a lot of this feels like magic, and it kind of is in a sense. Just know that these configurations are essential for tailwind to know where to look to style our website.
