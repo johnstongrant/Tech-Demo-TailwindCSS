@@ -205,6 +205,9 @@ Lets do a very simple walkthrough by utlizing these breakpoints to see how they 
 
 When you refresh your app you should see the sample text in the color red. This is because we've set our breakpoint to `md` meaning on screens 768px or bigger the text will remain red. However, if you increase the zoom of your screen (or utilize developer tools to display mobile view) you will see the text change to blue.
 
+[Larger Screen](redtxt.png)
+[Smaller Screen](bluetxt.png)
+
 
 
 ## Tailwind Config customization: Dark Mode
