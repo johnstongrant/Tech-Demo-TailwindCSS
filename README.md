@@ -4,11 +4,11 @@
 
 ## Introduction
 
-Welcome to team Patches' tech demo! Today we will be walking you through a CSS library called Tailwind. We wanted to share this library with you before getting into the weeds with project 2 and provide a framework that will make developing your app swift and simple.
+Welcome to team Patches' tech demo! Today we will be walking you through a CSS library called Tailwind. We wanted to share this library with you before getting into the weeds with project 2 to provide a framework that will make developing your app front-end swift and simple.
 
-By the end of this tutorial you will have some of the basic stepping stones for working within a React/Tailwind framework, and we will provide some useful links to branch off from so you can continue your learning.
+By the end of this tutorial, you will have some of the basic stepping stones for working within a React/Tailwind framework. We will also provide some useful links for you dive deeper into Tailwind CSS if you choose.
 
-This repo serves as a skeleton react-app that you can pull down and follow the next steps to actively learn tailwind.
+This repo serves as a skeleton react-app that you can pull down to follow the next steps and actively learn Tailwind.
 
 ## Why Use a CSS Framework
 
@@ -28,38 +28,39 @@ Tailwind is a utility class based CSS framework. Utility classes give you the fl
 
 While the same effect could be accomplished by inlining the styles using the [HTML style attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/style), utility classes provide the benefit of coming directly from a CSS stylesheet. In CSS parlance, this means we're applying "rules" rather than "styles" to elements, which allows us to access the entire CSS toolbox and use CSS [preprocessors](https://developer.mozilla.org/en-US/docs/Glossary/CSS_preprocessor), among [many other benefits](https://frontstuff.io/no-utility-classes-arent-the-same-as-inline-styles).
 
-### Task 1: Installing Tailwindcss
+### Task 1: Installing Tailwind
 
-_please note that all credit and attribution for setup process belongs to [tailwind](https://v2.tailwindcss.com/docs/guides/create-react-app)_
+_please note that all credit and attribution for setup process belongs to [Tailwind CSS](https://v2.tailwindcss.com/docs/guides/create-react-app)._
 
-Tailwind comes with a lot of functionality and all sorts of customization that can be daunting at first, but with our help we will make these new ideas fit seamlessly with your basic foundations of css.
+Tailwind comes with a lot of functionality and all sorts of customization that can be daunting at first, but with our help we will make these new ideas fit seamlessly with your basic foundations of CSS.
 
-First you should clone this repository down however you like, but we will be providing:
+First, if you want to learn Tailwind using this repo, you should clone this repository:
 
 ```bash
 git clone https://github.com/johnstongrant/Tech-Demo-TailwindCSS.git
 ```
 
-Next, inorder to get started we can simply navigate into our react app project, and just like any other library we invoke an npm install prompt as follows:
+Once you have a React project, navigate into the React app project and install Tailwind using npm:
 
 ```bash
+cd <react app root directory>
 npm install -D tailwindcss
 ```
 
-This will start importing all of the necessary toolkits for us to start using tailwind in our project.
+This will import all of the packages and dependencies for us to start using Tailwind in our project.
 
-### Task 2: Config and Css
+### Task 2: Configuration
 
-Next we will be creating a config file specifically for tailwind so that it can know our specified settings if we wish to change them.
+Next we will create a config file specifically for Tailwind, so Tailwind can properly integrate with our React app, and so we can configure Tailwind beyond the default configuration if needed. The config file can be created automatically by running:
 
 ```bash
 npx tailwindcss init
 ```
 
+Once this command has been run, it will create a file calledd `tailwind.config.js` in your project's root directory. In this file, you will see the following default contents:
 
-In this file you will see:
-
-```/** @type {import('tailwindcss').Config} */
+```js
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [],
   theme: {
@@ -69,17 +70,24 @@ module.exports = {
 }
 ```
 
-We want to ensure tailwind knows where to look for our templates and react components, so in the 'content: []' array add the following string:
+We want to ensure Tailwind knows where to look for our templates and react components. We need to change the contents of the `tailwind.config.js` file in order for Tailwind to know this:
 
 ```js
-"./src/**/*.{js,jsx,ts,tsx}"
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
 ```
 
-I know a lot of this feels like magic, and it kind of is in a sense. Just know that these configurations are essential for tailwind to know where to look to style our website.
+I know a lot of this feels like magic, and it kind of is in a sense. Just know that these configurations are essential for Tailwind to know where to look to style our website.
 
-This will allow tailwind to search for all your related components and configure them to tailwind's css formats and get rid of unecessary component styling when we host our website.
+This will allow Tailwind to search for all your related components, configure the components to use Tailwind's CSS formating, and get rid of unecessary component styling when we host our website.
 
-Lastly, in your index.css file, at the top add these three lines:
+Finally, in your index.css file, add these three lines to the top of the file:
 
 ```css
 @tailwind base;
@@ -87,13 +95,13 @@ Lastly, in your index.css file, at the top add these three lines:
 @tailwind utilities;
 ```
 
-You will also want to navigate to `index.js` and ensure you see `import './index.css'` somewhere at the top of the file.
+You should also check in your `index.js` file and ensure you see `import './index.css'` somewhere at the top of the file. Without this line, stles from `index.css` won't be applied!
 
 Whew. We know that was a lot of setup and some of it can seem confusing. However we are all done! Now we can start discussing why all this setup is worth doing.
 
-## Component 1: Tailwind Utility classes and States in action
+## Component 1: Tailwind Utility Classes and States in Action
 
-Tailwind can be used to to create interactions with elements by applying states using utility classes as discussed prior and modifiers like from the responsive design section. Take for example this line of code:
+Tailwind can be used to create interactions with elements by applying states using utility classes, as discussed previously, and modifiers - which will be discussed in the responsive design section. Take for example this line of code:
 
 ```html
 <button class="bg-blue-400 rounded-full"> A Cool Button </button>
