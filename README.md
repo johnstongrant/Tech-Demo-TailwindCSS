@@ -48,7 +48,7 @@ npm install -D tailwindcss
 
 This will start importing all of the necessary toolkits for us to start using tailwind in our project.
 
-### Task 3: Config and Css
+### Task 2: Config and Css
 
 Next we will be creating a config file specifically for tailwind so that it can know our specified settings if we wish to change them.
 
@@ -116,6 +116,16 @@ Using states, we can easily add conditionality to our element's appearence with 
 ## Component 2: Using Tailwind's out-of-the-box Examples
 
 During homework and project 1 we were told to utilize PureCss which came with it a lot of pre-defined templates for us to work with. Tailwind also provides some sample templates for us to utilize and the list of them can be found in [Tailwind's component documentation](https://tailwindui.com/components).
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**Please note: If you intend on using tailwind's predefined templates you will need to import the following dependiecies with this command:**
+```
+npm install @heroicons/react @headlessui/react
+```
+
+This is due to most of tailwinds templates utilizing heroicon imports and headless ui functionality to get responsive behavior. By all means delete their imports and calls, but this is here to remove headaches with your implementations using tailwind.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 For now, we will demonstrate using a Tailwind Avatar component. This is the code for Avatar component from the abovementioned Tailwind website:
 
@@ -194,6 +204,8 @@ Lets do a very simple walkthrough by utlizing these breakpoints to see how they 
 ```
 
 When you refresh your app you should see the sample text in the color red. This is because we've set our breakpoint to `md` meaning on screens 768px or bigger the text will remain red. However, if you increase the zoom of your screen (or utilize developer tools to display mobile view) you will see the text change to blue.
+
+
 
 ## Tailwind Config customization: Dark Mode
 
