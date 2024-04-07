@@ -271,4 +271,4 @@ localStorage.removeItem('theme')
 ```
 
 ## Review and Discussion
-To conclude, we've shared a lot of information to you about the use cases and inner components of tailwind CSS. Although we only scratch the surface of what tailwind can do for you and your web app, we wanted to give you several different topics that you can now delve deeper into seeing if tailwind will work for you and your team. We hope that one of these topics will be enough to show you that tailwind is worht including and can make your css lifecyle something to look forward to!
+To conclude, we've shared a lot of information to you about the use cases and inner components of tailwind CSS. Although we only scratch the surface of what tailwind can do for you and your web app, we wanted to give you several different topics that you can now delve deeper into, and see if tailwind will work for you and your team. We hope that one of these topics will be enough to show you that tailwind is worth including and can make your css lifecyle something to look forward to!
