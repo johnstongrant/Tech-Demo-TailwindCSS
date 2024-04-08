@@ -6,13 +6,13 @@
 
 Welcome to team Patches' tech demo! Today we will be walking you through a CSS library called Tailwind. We wanted to share this library with you before getting into the weeds with project 2 to provide a framework that will make developing your app front-end swift and simple.
 
-By the end of this tutorial, you will have some of the basic stepping stones for working within a React/Tailwind framework. We will also provide some useful links for you dive deeper into Tailwind CSS if you choose.
+By the end of this tutorial, you will have some of the basic stepping stones for working within a React/Tailwind framework. We will also provide some useful links for you to dive deeper into Tailwind CSS if you choose.
 
 This repo serves as a skeleton react-app that you can pull down to follow the next steps and actively learn Tailwind.
 
 ## Why Use a CSS Framework
 
-Frameworks like Tailwind provide ready-to-use CSS classes that allow you to easily implement your web app's layout and style common components without having to reinvent the wheel. This not only saves time, but also promotes reusability. Dev teams often use CSS frameworks to avoid duplication of CSS styles, maintain consistent user interfaces, and provide a common style naming schema that makes large-scale development more navigable. Open source frameworks such as Tailwind also come with the benefit of having established documentation and a large userbase which can be helpful when troubleshooting and searching for inspiration.
+Frameworks like Tailwind provide ready-to-use CSS classes that allow you to easily implement your web app's layout and style common components without having to reinvent the wheel. This not only saves time, but also promotes reusability. Dev teams often use CSS frameworks to avoid duplication of CSS styles, maintain consistent user interfaces, and provide a common style naming schema that makes large-scale development more navigable. Open source frameworks such as Tailwind also come with the benefit of having established documentation and a large user base which can be helpful when troubleshooting and searching for inspiration.
 
 While there are [many CSS frameworks](https://github.com/troxler/awesome-css-frameworks) to choose from, each with their own benefits, Tailwind has [soared in popularity](https://ossinsight.io/collections/css-framework/) over the last several years.
 
@@ -57,7 +57,7 @@ Next we will create a config file specifically for Tailwind, so Tailwind can pro
 npx tailwindcss init
 ```
 
-Once this command has been run, it will create a file calledd `tailwind.config.js` in your project's root directory. In this file, you will see the following default contents:
+Once this command has been run, it will create a file called `tailwind.config.js` in your project's root directory. In this file, you will see the following default contents:
 
 ```js
 /** @type {import('tailwindcss').Config} */
@@ -85,7 +85,7 @@ module.exports = {
 
 I know a lot of this feels like magic, and it kind of is in a sense. Just know that these configurations are essential for Tailwind to know where to look to style our website.
 
-This will allow Tailwind to search for all your related components, configure the components to use Tailwind's CSS formating, and get rid of unecessary component styling when we host our website.
+This will allow Tailwind to search for all your related components, configure the components to use Tailwind's CSS formatting, and get rid of uneccessary component styling when we host our website.
 
 #### Themes
 
@@ -112,7 +112,7 @@ module.exports = {
 }
 ```
 
-For in-depth documentation of custom themeing in Tailwind, see Tailwind's [official documentation](https://tailwindcss.com/docs/theme).
+For in-depth documentation of custom theming in Tailwind, see Tailwind's [official documentation](https://tailwindcss.com/docs/theme).
 
 #### Configuration Wrap-Up
 
@@ -124,7 +124,7 @@ Finally, in your index.css file, add these three lines to the top of the file:
 @tailwind utilities;
 ```
 
-You should also check in your `index.js` file and ensure you see `import './index.css'` somewhere at the top of the file. Without this line, stles from `index.css` won't be applied!
+You should also check in your `index.js` file and ensure you see `import './index.css'` somewhere at the top of the file. Without this line, styles from `index.css` won't be applied!
 
 Whew. We know that was a lot of setup and some of it can seem confusing. However we are all done! Now we can start discussing why all this setup is worth doing.
 
@@ -148,14 +148,14 @@ By adding an active state and focus state, we can have the button become even da
 <button class="bg-blue-400 hover:bg-blue-700 active:bg-blue-800 focus:ring focus:ring-red-400 rounded-full"> A Cool Button </button>
 ```
 
-Using states, we can easily add conditionality to our element's appearence with using these psuedo-class modifiers. A list of available psuedo-class modifiers to use can be found within the [Tailwind CSS docs](https://tailwindcss.com/docs/hover-focus-and-other-states#pseudo-class-reference).
+Using states, we can easily add conditionality to our element's appearance with using these pseudo-class modifiers. A list of available pseudo-class modifiers to use can be found within the [Tailwind CSS docs](https://tailwindcss.com/docs/hover-focus-and-other-states#pseudo-class-reference).
 
 ## Component 2: Using Tailwind's Out-of-the-Box Examples
 
 Homework 1 and Project 1 utilized PureCss, which came with a lot of pre-defined templates for us to work with. Tailwind also provides some sample templates for us to utilize and the list of them can be found in [Tailwind's component documentation](https://tailwindui.com/components).
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Please note: If you intend on using Tailwind's predefined templates you will need to import the following dependiecies with this command:**
+**Please note: If you intend on using Tailwind's predefined templates you will need to import the following dependencies with this command:**
 
 ```bash
 npm install @heroicons/react @headlessui/react
@@ -250,7 +250,7 @@ When you refresh your app, you should see the sample text in the color red. This
 
 Tailwind provides low-level utility classes to build custom designs. This feature enables us to create a dark mode theme for users who prefer an alternative color scheme. To start the dark mode implementation, we need to apply some changes to the `tailwind.config.js` file we created while setting up Tailwind. This file is found in your react project's root directory.
 
-To add dark mode theming, change the contents of your `tailwind.config.js` to the following:
+To add dark mode theming, add a "darkMode" key to the `tailwind.config.js` file, as shown here:
 
 ```js
 /** @type {import('tailwindcss').Config} */
@@ -264,7 +264,7 @@ module.exports = {
 }
 ```
 
-The configuration above will enable you and your team to use a "dark:" CSS selector in order to distinguish between classes that will be used for dark mode and those of that will be used for light mode. The following is an example of how to use dark mode class assignment:
+The configuration above will enable you and your team to use a "dark:" CSS selector in order to distinguish between classes that will be used for dark mode and those that will be used for light mode. The following is an example of how to use dark mode class assignment:
 
 ```html
 <!-- Dark mode not enabled -->
@@ -292,7 +292,7 @@ In this example, dark mode is not enabled, therefore `dark:bg-black` would not w
 </html>
 ```
 
-Furthermore, Tailwind provides some strategies that enable the developers to use user's system prefernces in order to change the default theme of the website by `window.matchMedia()` API. Here's a simple example of how to use operating system prefernces while defining different themes for the website. Note that it's best to add this JavaScript inline the the HTML Head element in order to avoid a ["flash of unstyled content"](https://en.wikipedia.org/wiki/Flash_of_unstyled_content):
+Furthermore, Tailwind provides some strategies that enable developers to use a user's system preferences in order to change the default theme of the website by `window.matchMedia()` API. Here's a simple example of how to use operating system prefernces while defining different themes for the website. Note that it's best to add this JavaScript inline the the HTML Head element in order to avoid a ["flash of unstyled content"](https://en.wikipedia.org/wiki/Flash_of_unstyled_content):
 
 ```js
 // On page load or when changing themes
@@ -314,4 +314,4 @@ localStorage.removeItem('theme')
 
 ## Review and Discussion
 
-To conclude, we've shared a lot of information to you about the use cases and inner components of Tailwind CSS. Although we only scratch the surface of what Tailwind can do for you and your web app, we wanted to give you several different topics that you can now delve deeper into, and see if Tailwind will work for you and your team. We hope that one of these topics will be enough to show you that Tailwind is worth including and can make your css lifecyle something to look forward to!
+To conclude, we've shared a lot of information about the use cases and components of Tailwind CSS. Although we only scratch the surface of what Tailwind can do for you and your web app, we wanted to give you a brief peek into several different topics that you can now delve deeper into, and see if Tailwind will work for you and your team. We hope that one of these topics will be enough to show you that Tailwind is worth using in your projects, and can make designing your app something to look forward to!
