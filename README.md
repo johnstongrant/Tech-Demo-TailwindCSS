@@ -105,7 +105,7 @@ module.exports = {
     fontFamily: {
       sans: ['Bungee Spice', 'sans-serif'],
       serif: ['Merriweather', 'serif'],
-    }
+    },
     extend: {},
   },
   plugins: [],
