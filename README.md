@@ -155,20 +155,26 @@ Whew. We know that was a lot of setup and some of it can seem confusing. However
 Tailwind can be used to create interactions with elements by applying states using utility classes, as discussed previously, and modifiers - which will be discussed in the responsive design section. Take for example this line of code:
 
 ```html
-<button class="bg-blue-400 rounded-full"> A Cool Button </button>
+<button class="bg-blue-400 rounded-full p-3"> A Cool Button </button>
 ```
+
+![A cool button](/demo-resources/button.png)
 
 We can apply a hover state within the class definition to define behavior for when the user hovers their cursor over the button. Let's have it so the button gets darker when we hover over it by modifying the line of code to following:
 
 ```html
-<button class="bg-blue-400 hover:bg-blue-700 rounded-full"> A Cool Button </button>
+<button class="bg-blue-400 hover:bg-blue-700 rounded-full p-3"> A Cool Button </button>
 ```
+
+![A cool button with hover state](/demo-resources/hover.gif)
 
 By adding an active state and focus state, we can have the button become even darker when clicked and give it a red ring when it's right clicked like so:
 
 ```html
-<button class="bg-blue-400 hover:bg-blue-700 active:bg-blue-800 focus:ring focus:ring-red-400 rounded-full"> A Cool Button </button>
+<button class="bg-blue-400 hover:bg-blue-700 active:bg-blue-800 focus:ring focus:ring-red-400 rounded-full p-3"> A Cool Button </button>
 ```
+
+![A cool button with focus and active states](/demo-resources/focus.gif)
 
 Using states, we can easily add conditionality to our element's appearance with using these pseudo-class modifiers. A list of available pseudo-class modifiers to use can be found within the [Tailwind CSS docs](https://tailwindcss.com/docs/hover-focus-and-other-states#pseudo-class-reference).
 
