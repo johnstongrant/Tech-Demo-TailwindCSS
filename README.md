@@ -209,7 +209,7 @@ For now, we will demonstrate using a Tailwind Avatar component. This is the code
 
 ![Avatar of a happy Tailwind CSS user](/demo-resources/avatar.png)
 
-The HTML version of this avatar works perfectly fine as standalone HTML, but let's add some reusability by converting this avatar into a reusable React component.
+Like the basic styling using Tailwind's config file and the button states, this avatar component can be created entirely using Tailwind's provided utility functions - not a line of CSS written. The HTML version of this avatar works perfectly fine as standalone HTML, but let's add some reusability by converting this avatar into a reusable React component.
 
 First, you will want the component to be wrapped in a React component and export it:
 
@@ -243,7 +243,7 @@ export function Avatar({ src, className }) {
 
 This is it! Now you can call the new Avatar component how many times you want with appropriate props. We have just created a reusable React component with props.
 
-```js
+```jsx
 <Avatar src="src1"></Avatar>
 <Avatar src="src2"></Avatar>
 <Avatar src="..."></Avatar>
@@ -273,8 +273,8 @@ Let's do a very simple walkthrough of breakpoints to see how they work. Copy the
 
 When you refresh your app, you should see the sample text in the color red. This is because we've set our breakpoint to `md`, meaning on "medium" screens - displays 768px wide or larger - the text will remain red. However, if you increase the zoom of your screen (or utilize developer tools to display mobile view) you will see the text change to blue.
 
-[Larger Screen](redtxt.png)
-[Smaller Screen](bluetxt.png)
+![Large Screen](/demo-resources/text-desktop.png)
+![Small Screen](/demo-resources/text-mobile.png)
 
 ## Tailwind Config Customization: Dark Mode
 
