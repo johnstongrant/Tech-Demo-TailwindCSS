@@ -99,8 +99,8 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     colors: {
-      'red': '#ff0000',
-      'blue': '#0000ff',
+      'yellow': '#ffcc99',
+      'gray': '#333333',
     },
     fontFamily: {
       sans: ['Bungee Spice', 'sans-serif'],
@@ -111,6 +111,28 @@ module.exports = {
   plugins: [],
 }
 ```
+
+Without writing a single line of CSS, we can use Tailwind's config settings and utility classes to quickly change to look and feel of a web app. Using the above config, we can quickly build out a distinct design (_note: this example requires the import of the "Bugnee Spice" and "Merriweather" fonts from Google fonts_):
+
+```js
+import './App.css';
+
+function App() {
+  return (
+    <div className="App bg-gray min-h-screen text-center pt-10">
+      <header className="App-header">
+        <h1 className="font-sans text-6xl">With Tailwind CSS</h1>
+        <p className="font-serif text-2xl text-yellow">This didn't even require writing CSS - just Tailwind config and Google fonts.</p>
+      </header>
+    </div>
+  );
+}
+
+export default App;
+```
+
+![Before Tailwind config](/demo-resources/config-before.png)
+![After Tailwind config](/demo-resources/config-after.png)
 
 For in-depth documentation of custom theming in Tailwind, see Tailwind's [official documentation](https://tailwindcss.com/docs/theme).
 
