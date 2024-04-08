@@ -67,7 +67,7 @@ module.exports = {
     extend: {},
   },
   plugins: [],
-}
+};
 ```
 
 We want to ensure Tailwind knows where to look for our templates and react components. We need to change the contents of the `tailwind.config.js` file in order for Tailwind to know this:
@@ -80,7 +80,7 @@ module.exports = {
     extend: {},
   },
   plugins: [],
-}
+};
 ```
 
 I know a lot of this feels like magic, and it kind of is in a sense. Just know that these configurations are essential for Tailwind to know where to look to style our website.
@@ -99,30 +99,33 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     colors: {
-      'yellow': '#ffcc99',
-      'gray': '#333333',
+      yellow: "#ffcc99",
+      gray: "#333333",
     },
     fontFamily: {
-      sans: ['Bungee Spice', 'sans-serif'],
-      serif: ['Merriweather', 'serif'],
+      sans: ["Bungee Spice", "sans-serif"],
+      serif: ["Merriweather", "serif"],
     },
     extend: {},
   },
   plugins: [],
-}
+};
 ```
 
 Without writing a single line of CSS, we can use Tailwind's config settings and utility classes to quickly change to look and feel of a web app. Using the above config, we can quickly build out a distinct design (_note: this example requires the import of the "Bugnee Spice" and "Merriweather" fonts from Google fonts_):
 
 ```js
-import './App.css';
+import "./App.css";
 
 function App() {
   return (
     <div className="App bg-gray min-h-screen text-center pt-10">
       <header className="App-header">
         <h1 className="font-sans text-6xl">With Tailwind CSS</h1>
-        <p className="font-serif text-2xl text-yellow">This didn't even require writing CSS - just Tailwind config and Google fonts.</p>
+        <p className="font-serif text-2xl text-yellow">
+          This didn't even require writing CSS - just Tailwind config and Google
+          fonts.
+        </p>
       </header>
     </div>
   );
@@ -155,7 +158,7 @@ Whew. We know that was a lot of setup and some of it can seem confusing. However
 Tailwind can be used to create interactions with elements by applying states using utility classes, as discussed previously, and modifiers - which will be discussed in the responsive design section. Take for example this line of code:
 
 ```html
-<button class="bg-blue-400 rounded-full p-3"> A Cool Button </button>
+<button class="bg-blue-400 rounded-full p-3">A Cool Button</button>
 ```
 
 ![A cool button](/demo-resources/button.png)
@@ -163,7 +166,9 @@ Tailwind can be used to create interactions with elements by applying states usi
 We can apply a hover state within the class definition to define behavior for when the user hovers their cursor over the button. Let's have it so the button gets darker when we hover over it by modifying the line of code to following:
 
 ```html
-<button class="bg-blue-400 hover:bg-blue-700 rounded-full p-3"> A Cool Button </button>
+<button class="bg-blue-400 hover:bg-blue-700 rounded-full p-3">
+  A Cool Button
+</button>
 ```
 
 ![A cool button with hover state](/demo-resources/hover.gif)
@@ -171,7 +176,11 @@ We can apply a hover state within the class definition to define behavior for wh
 By adding an active state and focus state, we can have the button become even darker when clicked and give it a red ring when it's right clicked like so:
 
 ```html
-<button class="bg-blue-400 hover:bg-blue-700 active:bg-blue-800 focus:ring focus:ring-red-400 rounded-full p-3"> A Cool Button </button>
+<button
+  class="bg-blue-400 hover:bg-blue-700 active:bg-blue-800 focus:ring focus:ring-red-400 rounded-full p-3"
+>
+  A Cool Button
+</button>
 ```
 
 ![A cool button with focus and active states](/demo-resources/focus.gif)
@@ -182,7 +191,8 @@ Using states, we can easily add conditionality to our element's appearance with 
 
 Homework 1 and Project 1 utilized PureCss, which came with a lot of pre-defined templates for us to work with. Tailwind also provides some sample templates for us to utilize and the list of them can be found in [Tailwind's component documentation](https://tailwindui.com/components).
 
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---
+
 **Please note: If you intend on using Tailwind's predefined templates you will need to import the following dependencies with this command:**
 
 ```bash
@@ -191,7 +201,7 @@ npm install @heroicons/react @headlessui/react
 
 This is due to most of Tailwind's templates utilizing heroicon imports and headless ui functionality to get responsive behavior. By all means delete their imports and calls, but this is here to remove headaches with your implementations using Tailwind.
 
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---
 
 For now, we will demonstrate using a Tailwind Avatar component. This is the code for Avatar component from the abovementioned Tailwind website:
 
@@ -229,7 +239,7 @@ Next, we want this component to have some props rather than use static values. F
 export function Avatar({ src, className }) {
   return (
     <>
-      <div className="flex -space-x-1 overflow-hidden">
+      <div className={className}>
         <img
           className="inline-block h-6 w-6 rounded-full ring-2 ring-white"
           src={src}
@@ -241,7 +251,7 @@ export function Avatar({ src, className }) {
 }
 ```
 
-This is it! Now you can call the new Avatar component how many times you want with appropriate props. We have just created a reusable React component with props.
+This is it! Now you can call the new Avatar component how many times you want with desired props.
 
 ```jsx
 <Avatar src="src1"></Avatar>
@@ -285,13 +295,13 @@ To add dark mode theming, add a "darkMode" key to the `tailwind.config.js` file,
 ```js
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: 'selector',
+  darkMode: "selector",
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {},
   },
   plugins: [],
-}
+};
 ```
 
 The configuration above will enable you and your team to use a "dark:" CSS selector in order to distinguish between classes that will be used for dark mode and those that will be used for light mode. The following is an example of how to use dark mode class assignment:
@@ -299,12 +309,12 @@ The configuration above will enable you and your team to use a "dark:" CSS selec
 ```html
 <!-- Dark mode not enabled -->
 <html>
-<body>
-  <!-- Will be white -->
-  <div class="bg-white dark:bg-black">
-    <!-- ... -->
-  </div>
-</body>
+  <body>
+    <!-- Will be white -->
+    <div class="bg-white dark:bg-black">
+      <!-- ... -->
+    </div>
+  </body>
 </html>
 ```
 
@@ -313,12 +323,12 @@ In this example, dark mode is not enabled, therefore `dark:bg-black` would not w
 ```html
 <!-- Dark mode enabled -->
 <html class="dark">
-<body>
-  <!-- Will be black -->
-  <div class="bg-white dark:bg-black">
-    <!-- ... -->
-  </div>
-</body>
+  <body>
+    <!-- Will be black -->
+    <div class="bg-white dark:bg-black">
+      <!-- ... -->
+    </div>
+  </body>
 </html>
 ```
 
@@ -326,20 +336,24 @@ Furthermore, Tailwind provides some strategies that enable developers to use a u
 
 ```js
 // On page load or when changing themes
-if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-  document.documentElement.classList.add('dark')
+if (
+  localStorage.theme === "dark" ||
+  (!("theme" in localStorage) &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches)
+) {
+  document.documentElement.classList.add("dark");
 } else {
-  document.documentElement.classList.remove('dark')
+  document.documentElement.classList.remove("dark");
 }
 
 // Whenever the user explicitly chooses light mode
-localStorage.theme = 'light'
+localStorage.theme = "light";
 
 // Whenever the user explicitly chooses dark mode
-localStorage.theme = 'dark'
+localStorage.theme = "dark";
 
 // Whenever the user explicitly chooses to respect the OS preference
-localStorage.removeItem('theme')
+localStorage.removeItem("theme");
 ```
 
 ## Review and Discussion
