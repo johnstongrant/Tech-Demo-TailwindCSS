@@ -196,9 +196,9 @@ This is due to most of Tailwind's templates utilizing heroicon imports and headl
 For now, we will demonstrate using a Tailwind Avatar component. This is the code for Avatar component from the abovementioned Tailwind website:
 
 ```jsx
-<div className="flex -space-x-1 overflow-hidden">
+<div className="flex-space-x-1 overflow-hidden">
   <img
-    className="inline-block h-6 w-6 rounded-full ring-2 ring-white"
+    className="inline-block h-32 w-32 rounded-full ring-2 ring-white"
     src={
       "https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
     }
@@ -206,6 +206,8 @@ For now, we will demonstrate using a Tailwind Avatar component. This is the code
   ></img>
 </div>
 ```
+
+![Avatar of a happy Tailwind CSS user](/demo-resources/avatar.png)
 
 The HTML version of this avatar works perfectly fine as standalone HTML, but let's add some reusability by converting this avatar into a reusable React component.
 
